@@ -23,7 +23,7 @@ public class AssignmentManager {
     }
 
     public double getAverage(){
-        double average;
+        double average = 0;
         Assignment x;
 
         for (int i = 0; i < assignments.size(); i++) {
