@@ -1,3 +1,5 @@
+package finalProject
+
 import javax.swing.*;
 
 public class AssignmentManagerFE {
