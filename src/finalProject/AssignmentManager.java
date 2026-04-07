@@ -10,15 +10,15 @@ public class AssignmentManager {
         assignments = new ArrayList<>();
     }
 
-    public void addAssignmnet(Assignment newAssignmnet){
-        assignments.add(newAssignmnet);
+    public void addAssignment(Assignment newAssignment){
+        assignments.add(newAssignment);
     }
 
-    public void removeAssignmnet(Assignment toRemove){
+    public void removeAssignment(Assignment toRemove){
         assignments.remove(toRemove);
     }
 
-    public void sortAssignmnets(){
+    public void sortAssignments(){
         assignments.sort(null);
     }
 
