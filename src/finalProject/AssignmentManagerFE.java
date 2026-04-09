@@ -1,13 +1,14 @@
-package finalProject
+package finalProject;
 
 import javax.swing.*;
+import javax.swing.border.*;
 
 public class AssignmentManagerFE {
 	private static AssignmentManager backend;
 	
 	private static JTextField addTitle, addCourse, addDay, addMonth, addYear, addGrade, addGrade2;
 	private static JTextField manageTitle;
-	private static JComboBox addType, displaySort;
+	private static JComboBox<SortType> addType, displaySort;
 	private static JTextArea output;
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Assignment Manager");
