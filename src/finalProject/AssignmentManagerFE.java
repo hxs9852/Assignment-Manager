@@ -8,7 +8,7 @@ public class AssignmentManagerFE {
 	
 	//this one just needs to be a member
 	//so that it can be set to visible
-	private static JLabel addGrade2Label; 
+	private static JLabel addGrade2Label, manageStatus; 
 	
 	private static JTextField addTitleField, addCourseField, addGradeField, addGrade2Field;
 	private static JTextField removeTitleField;
@@ -113,7 +113,7 @@ public class AssignmentManagerFE {
 		////MANAGE PANEL STUFF
 			
 		JPanel removePanel = new JPanel(null);
-		removePanel.setBounds(250, 10, 200, 100);
+		removePanel.setBounds(230, 10, 200, 100);
 		removePanel.setBorder(new TitledBorder("Remove"));
 		frame.add(removePanel);
 		
@@ -131,10 +131,10 @@ public class AssignmentManagerFE {
 		removeButton.setBounds(50, 60, 100, 30);
 		removePanel.add(removeButton);
 		
-		////MANAGE PANEL STUFF
-	
+		////SORT PANEL STUFF
+		
 		JPanel sortPanel = new JPanel(null);
-		sortPanel.setBounds(250, 120, 200, 100);
+		sortPanel.setBounds(230, 120, 200, 160);
 		sortPanel.setBorder(new TitledBorder("Manage"));
 		frame.add(sortPanel);
 		
@@ -148,13 +148,15 @@ public class AssignmentManagerFE {
 		sortButton.setBounds(50, 60, 100, 30);
 		sortPanel.add(sortButton);
 		
+		//a counter for how many aassignments there are
+		manageStatus = new JLabel("<html>Number of Assignments: 0<br>Average Grade: 0<html>");
+		manageStatus.setBounds(20,100,150,40);
+		sortPanel.add(manageStatus);
+		
 		////ACTUAL BIG DISPLAY AREA
 		output = new JTextArea();
-		output.setBounds(10, 290, 440, 200);
+		output.setBounds(450, 10, 250, 400);
 		frame.add(output);
-		
-		
-		
 		
 		frame.setVisible(true);
 		
