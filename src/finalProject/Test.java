@@ -9,9 +9,10 @@ public class Test extends Assignment{
         super();
         this.numOfQuestions = 1;
     }
-    Test(double grade, Date due, String title, String course, int questions){
-        super(grade, due, title, course);
+    Test(Date due, String title, String course, int correct, int questions){
+        super(0, due, title, course);
         this.numOfQuestions = questions;
+        this.calculateGrade(correct);
     }
 
     //Setters
