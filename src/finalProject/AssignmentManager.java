@@ -11,6 +11,9 @@ public class AssignmentManager {
     }
 
     public void addAssignment(Assignment newAssignment){
+        if(assignments.contains(newAssignment.getTitle())){
+            assignments.remove(newAssignment);
+        }
         assignments.add(newAssignment);
     }
 
