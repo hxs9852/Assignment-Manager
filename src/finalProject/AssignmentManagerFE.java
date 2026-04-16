@@ -156,12 +156,14 @@ public class AssignmentManagerFE {
 		////ACTUAL BIG DISPLAY AREA
 		output = new JTextArea();
 		output.setBounds(450, 10, 250, 400);
-		frame.add(output);
+		JScrollPane scroller = new JScrollPane(output);
+		frame.add(scroller);
 		
 		frame.setVisible(true);
 		
 		//function/button stuff
 		addType.addActionListener(e -> updateType());
+		addButton.addActionListener(e -> addAssignment());
 	}
 	
 	private static void updateType() {
@@ -171,6 +173,26 @@ public class AssignmentManagerFE {
 		} else {
 			addGrade2Field.setVisible(true);
 			addGrade2Label.setVisible(true);
+		}
+	}
+	
+	private static void addAssignment() {
+		try {
+			if (addType.getSelectedItem().equals("Assignment")) {
+				//assignment
+				String title = addTitleField.getText();
+				String course = addCourseField.getText();
+				Date duedate = new Date(addMonth.getSelectedIndex(),addDay.getSelectedIndex(), (int)addYear.getSelectedItem());
+				double grade = Double.valueOf(addGradeField.getText());
+				
+				Assignment a = new Assignment(grade, duedate, title, course);
+			} else {
+				
+			}
+		} catch(NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Error", "Number fields must be integers!\n\n", JOptionPane.ERROR_MESSAGE);
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Error", "Unknown error: " + e.getMessage(), JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }
