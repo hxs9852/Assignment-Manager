@@ -49,7 +49,7 @@ public class Assignment {
 	}
 	
 	public boolean isTurnedIn() {
-		return this.gradePercent == -1.0;
+		return this.gradePercent != -1.0;
 	}
 	
 	//default stuff
