@@ -34,6 +34,6 @@ public class Test extends Assignment{
     
 
     public String toString() {
-        return "[Test]: " + super.toString() + "\n" + "Number of Questions: " + getNumOfQuestions();
+        return "\"" + super.toString() + "\"\n" + "Number of Questions: " + getNumOfQuestions();
     }
 }

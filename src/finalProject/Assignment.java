@@ -54,6 +54,6 @@ public class Assignment {
 	
 	//default stuff
 	public String toString() {
-		return "[Assignment] \"" + this.title + "\"\nCourse: " + this.course + "\nDue: " + this.dueDate + "\nGrade: " + (this.isTurnedIn() ? this.gradePercent : "N/A");
+		return "\"" + this.title + "\"\nCourse: " + this.course + "\nDue: " + this.dueDate + "\nGrade: " + (this.isTurnedIn() ? this.gradePercent : "N/A");
 	}
 }
