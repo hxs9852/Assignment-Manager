@@ -11,13 +11,16 @@ public class Test extends Assignment{
     }
     Test(Date due, String title, String course, int correct, int questions){
         super(0, due, title, course);
-        this.numOfQuestions = questions;
+        this.setNumOfQuestions(questions);
         this.setGrade(correct);
     }
 
     //Setters
     public void setNumOfQuestions(int questions){
-        this.numOfQuestions = questions;
+    	if (questions <= 0)
+    		this.numOfQuestions = 5;
+    	else
+    		this.numOfQuestions = questions;
     }
     
     public void setGrade(int numberCorrect){
