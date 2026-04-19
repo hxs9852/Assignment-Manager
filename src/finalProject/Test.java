@@ -22,6 +22,7 @@ public class Test extends Assignment{
     
     public void setGrade(int numberCorrect){
         super.setGrade((double) (numberCorrect / getNumOfQuestions()) * 100);
+        System.out.println(this.getGrade());
     }
     
     //Getters
