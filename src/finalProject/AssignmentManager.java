@@ -11,8 +11,9 @@ public class AssignmentManager {
     }
 
     public void addAssignment(Assignment newAssignment){
-        if(search(newAssignment.getTitle()) == null) {
-            assignments.remove(newAssignment);
+    	int check = search(newAssignment.getTitle());
+        if(check != -1) {
+            assignments.remove(check);
         }
         assignments.add(newAssignment);
     }
@@ -75,11 +76,11 @@ public class AssignmentManager {
     	return this.assignments;
     }
     
-    public Assignment search(String name) {
+    public int search(String name) {
     	for (int i = 0; i < this.assignments.size(); i++) {
     		if (this.assignments.get(i).getTitle().equals(name))
-    			return this.assignments.get(i);
+    			return i;
     	}
-    	return null;
+    	return -1;
     }
 }
