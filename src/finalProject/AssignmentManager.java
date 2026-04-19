@@ -1,6 +1,5 @@
 package finalProject;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class AssignmentManager {
     //Instance Variables
@@ -12,7 +11,7 @@ public class AssignmentManager {
     }
 
     public void addAssignment(Assignment newAssignment){
-        if(assignments.contains(newAssignment.getTitle())){
+        if(search(newAssignment.getTitle()) == null) {
             assignments.remove(newAssignment);
         }
         assignments.add(newAssignment);
@@ -74,5 +73,13 @@ public class AssignmentManager {
     
     public ArrayList<Assignment> getAssignments() {
     	return this.assignments;
+    }
+    
+    public Assignment search(String name) {
+    	for (int i = 0; i < this.assignments.size(); i++) {
+    		if (this.assignments.get(i).getTitle().equals(name))
+    			return this.assignments.get(i);
+    	}
+    	return null;
     }
 }
