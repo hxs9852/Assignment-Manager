@@ -161,6 +161,7 @@ public class AssignmentManagerFE {
 		output.setBounds(450, 10, 250, 400);
 		output.setEditable(false);
 		JScrollPane scroller = new JScrollPane(output);
+		scroller.setBounds(450, 10, 250, 400);
 		frame.add(scroller);
 		
 		frame.setVisible(true);
@@ -169,6 +170,9 @@ public class AssignmentManagerFE {
 		addType.addActionListener(e -> updateType());
 		addButton.addActionListener(e -> addAssignment());
 		sortButton.addActionListener(e -> resort());
+		
+		//finally
+		backend = new AssignmentManager();
 	}
 	
 	private static void updateType() {
