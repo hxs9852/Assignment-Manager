@@ -1,5 +1,6 @@
 package finalProject;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class AssignmentManager {
     //Instance Variables
@@ -21,8 +22,40 @@ public class AssignmentManager {
         assignments.remove(toRemove);
     }
 
-    public void sortAssignments(){
-        assignments.sort(null);
+    public void sortAssignments(SortType sortType){
+        for (int i = 0; i < this.assignments.size()-1; i++) {
+        	Assignment item1 = this.assignments.get(i);
+        	int chosen = i;
+        	for (int j = i+1; j < this.assignments.size(); j++) {
+        		boolean goesFirst = false;
+        		Assignment item2 = this.assignments.get(j);
+        		
+        		//sort it based on the chosen sort condition
+        		switch (sortType) {
+        			case SortType.GRADE_ASCENDING:
+        				goesFirst = (item2.getGrade() <= item1.getGrade());
+        				break;
+        			case SortType.GRADE_DESCENDING:
+        				goesFirst = (item2.getGrade() >= item1.getGrade());
+        				break;
+        			case SortType.DATE_NEWEST:
+        				goesFirst = (item2.getDueDate().compareTo(item1.getDueDate()) >= 0);
+        				break;
+        			default:
+        				goesFirst = (item2.getDueDate().compareTo(item1.getDueDate()) <= 0);
+        				break;
+        		}
+        		
+        		if (goesFirst) {
+        			chosen = j;
+        		}
+        	}
+        	if (chosen != i) {
+        		Assignment temp = this.assignments.get(chosen);
+        		this.assignments.set(chosen, item1);
+        		this.assignments.set(i, temp);
+        	}
+        }
     }
 
     public double getAverage(){
@@ -37,5 +70,9 @@ public class AssignmentManager {
         average = average / assignments.size();
 
         return average;
+    }
+    
+    public ArrayList<Assignment> getAssignments() {
+    	return this.assignments;
     }
 }

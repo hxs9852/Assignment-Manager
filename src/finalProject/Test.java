@@ -3,6 +3,7 @@ package finalProject;
 public class Test extends Assignment{
     //Instance Variable
     private int numOfQuestions;
+    private double gradePercent; //overriding this one a tad
 
     //Constructor
     Test(){
@@ -25,8 +26,8 @@ public class Test extends Assignment{
     }
 
     //Methods
-    public double calculateGrade(int numberCorrect){
-        return (double) (numberCorrect / getNumOfQuestions()) * 100;
+    public void calculateGrade(int numberCorrect){
+        this.gradePercent = (double) (numberCorrect / getNumOfQuestions()) * 100;
     }
 
     public String toString() {

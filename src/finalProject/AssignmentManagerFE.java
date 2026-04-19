@@ -1,10 +1,13 @@
 package finalProject;
 
 import javax.swing.*;
+import java.util.*;
 import javax.swing.border.*;
 
 public class AssignmentManagerFE {
+	//non ui members
 	private static AssignmentManager backend;
+	private static SortType currentSort = SortType.DATE_NEWEST;
 	
 	//this one just needs to be a member
 	//so that it can be set to visible
@@ -156,6 +159,7 @@ public class AssignmentManagerFE {
 		////ACTUAL BIG DISPLAY AREA
 		output = new JTextArea();
 		output.setBounds(450, 10, 250, 400);
+		output.setEditable(false);
 		JScrollPane scroller = new JScrollPane(output);
 		frame.add(scroller);
 		
@@ -164,9 +168,12 @@ public class AssignmentManagerFE {
 		//function/button stuff
 		addType.addActionListener(e -> updateType());
 		addButton.addActionListener(e -> addAssignment());
+		sortButton.addActionListener(e -> resort());
 	}
 	
 	private static void updateType() {
+		addGradeField.setText("");
+		addGrade2Field.setText("");
 		if (addType.getSelectedItem().equals("Assignment")) {
 			addGrade2Field.setVisible(false);
 			addGrade2Label.setVisible(false);
@@ -174,6 +181,22 @@ public class AssignmentManagerFE {
 			addGrade2Field.setVisible(true);
 			addGrade2Label.setVisible(true);
 		}
+	}
+	
+	private static void updateList() {
+		backend.sortAssignments(currentSort);
+		List<Assignment> list = backend.getAssignments();
+		String s = "";
+		for (int i = 0; i < list.size(); i++) {
+			s += list.get(i) + "\n";
+		}
+		
+		output.setText(s);
+	}
+	
+	private static void resort() {
+		currentSort = (SortType)displaySort.getSelectedItem();
+		backend.sortAssignments(currentSort);
 	}
 	
 	private static void addAssignment() {
@@ -186,9 +209,21 @@ public class AssignmentManagerFE {
 				double grade = Double.valueOf(addGradeField.getText());
 				
 				Assignment a = new Assignment(grade, duedate, title, course);
-			} else {
 				
+				backend.addAssignment(a);
+			} else {
+				//test
+				String title = addTitleField.getText();
+				String course = addCourseField.getText();
+				Date duedate = new Date(addMonth.getSelectedIndex(),addDay.getSelectedIndex(), (int)addYear.getSelectedItem());
+				int grade1 = Integer.valueOf(addGradeField.getText());
+				int grade2 = Integer.valueOf(addGrade2Field.getText());
+				
+				Test a = new Test(duedate, title, course, grade1, grade2);
+				
+				backend.addAssignment(a);
 			}
+			updateList();
 		} catch(NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Error", "Number fields must be integers!\n\n", JOptionPane.ERROR_MESSAGE);
 		} catch(Exception e) {
