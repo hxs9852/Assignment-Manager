@@ -25,7 +25,7 @@ public class Test extends Assignment{
     
     public void setGrade(int numberCorrect){
         super.setGrade((double) (numberCorrect / getNumOfQuestions()) * 100);
-        System.out.println(this.getGrade());
+        System.out.println(numberCorrect);
     }
     
     //Getters
@@ -37,6 +37,6 @@ public class Test extends Assignment{
     
 
     public String toString() {
-        return "\"" + super.toString() + "\"\n" + "Number of Questions: " + getNumOfQuestions();
+        return super.toString() + "\n" + "Number of Questions: " + getNumOfQuestions();
     }
 }
