@@ -25,8 +25,10 @@ public class Date {
 	public void setDay(int d) {
 		int maxDays;
 		if (month == 2) maxDays = 29;
-		else if (month == 4 || month == 6 || month == 9 || month == 11) maxDays = 30;
-		else maxDays = 31;
+		else if (month == 4 || month == 6 || month == 9 || month == 11) 
+			maxDays = 30;
+		else 
+			maxDays = 31;
 		
 		if (day < 1 || day > maxDays) {
 			day = 1;

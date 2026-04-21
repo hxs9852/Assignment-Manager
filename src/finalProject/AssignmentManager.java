@@ -76,6 +76,10 @@ public class AssignmentManager {
     	return this.assignments;
     }
     
+    public int getCount() {
+    	return this.assignments.size();    
+    }
+    
     public int search(String name) {
     	for (int i = 0; i < this.assignments.size(); i++) {
     		if (this.assignments.get(i).getTitle().equals(name))
