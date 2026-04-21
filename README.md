@@ -23,11 +23,9 @@ The interface will allow students to add, remove, and edit assignments, along wi
   
 # Overview 
 
-A GUI Java program to help manage assignments for students. Helpful for keeping track of grades and assignment due dates. 
+A simple GUI Java program to help manage assignments for students. Helpful for keeping track of grades and assignment due dates. 
 
- 
-
-#Main Java Concepts: 
+# Main Java Concepts
 
 GUI Design 
 Enums 
@@ -36,14 +34,15 @@ Exception Handling
 
 # Key Features 
 
-    Add or Remove an Assignment / Test 
-    Sort by Due Date or Grade
+- Add or remove assignments with grades, due dates, courses, etc.
+- Sort existing assignments by grade or date (either way)
+- Automatically calculate the average of all given assignments
     
 
 # Requirements 
 
-Java JDK 25 
-Intellij / Eclipse 
+- Java JDK 25 
+- Intellij / Eclipse 
 
 # Getting Started 
 
@@ -58,15 +57,14 @@ Mostly self explainatory.
 
 # UML Diagram 
 
+![The UML Diagram](/docs/umldiagram.png)
+
 # Future Enhancements 
 
-Saving assignment to a text file  
-Loading from a text file  
-Filtering assignments by class name 
-
- 
-
- 
+- Saving and loading assignments (for long term use)
+- More filtering options
+- Grouping assigmments (per-class, per-month, etc.)
+- GPA calculation?
 
 # Credits  
 
