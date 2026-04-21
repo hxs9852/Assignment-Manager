@@ -68,8 +68,8 @@ Mostly self explainatory.
 
 # Credits  
 
-Developed by Team: Caroline Cacho and Hayden Sangosina 
-Instructor: Dr. Jiandong (Jin) Wang 
+Developed by Team: Caroline Cacho and Hayden Sangosina  
+Instructor: Dr. Jiandong (Jin) Wang  
 Course: CSE 1325 – Object-Oriented Programming  
 
 # License 
