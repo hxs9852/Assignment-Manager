@@ -67,7 +67,7 @@ public class AssignmentManagerFE {
 			tempDays[i] = i+1;
 		}
 		
-		addDay = new JComboBox<>(tempDays);
+		addDay = new JComboBox<Integer>(tempDays);
 		addDay.setBounds(130,120,50,30);
 		addPanel.add(addDay);
 		
@@ -76,7 +76,7 @@ public class AssignmentManagerFE {
 			tempYears[i] = 2020+i;
 		}
 		
-		addYear = new JComboBox<>(tempYears);
+		addYear = new JComboBox<Integer>(tempYears);
 		addYear.setBounds(80,150,100,30);
 		addPanel.add(addYear);
 		
@@ -146,6 +146,8 @@ public class AssignmentManagerFE {
 		displaySort.setBounds(20,20,160, 30);
 		sortPanel.add(displaySort);
 		
+		displaySort.setSelectedItem(SortType.DATE_NEWEST);
+		
 		//da button
 		JButton sortButton = new JButton("Sort");
 		sortButton.setBounds(50, 60, 100, 30);
@@ -165,6 +167,11 @@ public class AssignmentManagerFE {
 		frame.add(scroller);
 		
 		frame.setVisible(true);
+		
+		////Just some info stuff to help
+		JLabel info = new JLabel("<html>Add or remove assignments as you see fit.<br><br>Negative grades are considered missing.<html>");
+		info.setBounds(100, 200, 250, 250);
+		frame.add(info);
 		
 		//function/button stuff
 		addType.addActionListener(e -> updateType());
@@ -189,27 +196,32 @@ public class AssignmentManagerFE {
 	
 	private static void updateList() {
 		backend.sortAssignments(currentSort);
+		
 		List<Assignment> list = backend.getAssignments();
 		String s = "";
 		for (int i = 0; i < list.size(); i++) {
+			if (i > 0)
+				s += "\n";
 			s += list.get(i) + "\n";
 		}
 		
 		output.setText(s);
+		manageStatus.setText("<html>Number of Assignments: " + backend.getCount() + "<br>Average Grade: " + backend.getAverage() + "<html>");
 	}
 	
 	private static void resort() {
 		currentSort = (SortType)displaySort.getSelectedItem();
-		backend.sortAssignments(currentSort);
+		updateList();
 	}
 	
 	private static void addAssignment() {
 		try {
+			System.out.println(addDay.getSelectedItem());
 			if (addType.getSelectedItem().equals("Assignment")) {
 				//assignment
 				String title = addTitleField.getText();
 				String course = addCourseField.getText();
-				Date duedate = new Date(addMonth.getSelectedIndex(),addDay.getSelectedIndex(), (int)addYear.getSelectedItem());
+				Date duedate = new Date(addMonth.getSelectedIndex()+1,(int)addDay.getSelectedItem(), (int)addYear.getSelectedItem());
 				double grade = Double.valueOf(addGradeField.getText());
 				
 				Assignment a = new Assignment(grade, duedate, title, course);
@@ -219,7 +231,7 @@ public class AssignmentManagerFE {
 				//test
 				String title = addTitleField.getText();
 				String course = addCourseField.getText();
-				Date duedate = new Date(addMonth.getSelectedIndex(),addDay.getSelectedIndex(), (int)addYear.getSelectedItem());
+				Date duedate = new Date(addMonth.getSelectedIndex()+1,(int)addDay.getSelectedItem(), (int)addYear.getSelectedItem());
 				int grade1 = Integer.valueOf(addGradeField.getText());
 				int grade2 = Integer.valueOf(addGrade2Field.getText());
 				
