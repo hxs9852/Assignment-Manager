@@ -59,6 +59,8 @@ public class AssignmentManager {
     }
 
     public double getAverage(){
+    	if (assignments.size() == 0)
+    		return 0;
         double average = 0;
         Assignment x;
 
@@ -68,6 +70,9 @@ public class AssignmentManager {
         }
 
         average = average / assignments.size();
+        
+        //rounding it out so its not ugly
+        average = Math.floor(average*100)/100;
 
         return average;
     }

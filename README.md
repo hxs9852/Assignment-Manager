@@ -4,10 +4,6 @@ A Java program that will help students to keep track of assignments for their cl
 The program will provide a place to track due dates, and the classes which each assignment is for. 
 The interface will allow students to add, remove, and edit assignments, along with sorting assignments by their due dates. 
 
- 
-
- 
-
 # Table of Contents 
 
 - [Overview](#overview)

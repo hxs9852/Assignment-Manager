@@ -177,6 +177,7 @@ public class AssignmentManagerFE {
 		addType.addActionListener(e -> updateType());
 		addButton.addActionListener(e -> addAssignment());
 		sortButton.addActionListener(e -> resort());
+		removeButton.addActionListener(e -> removeAssignment());
 		
 		//finally
 		backend = new AssignmentManager();
@@ -244,6 +245,27 @@ public class AssignmentManagerFE {
 			JOptionPane.showMessageDialog(null, "Error", "Number fields must be integers!\n\n", JOptionPane.ERROR_MESSAGE);
 		} catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Error", "Unknown error: " + e.getMessage(), JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	private static void removeAssignment() {
+		String title = removeTitleField.getText();
+
+		//Check if text field is empty
+		if (title.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Please enter a title to remove.", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		//Find the index to remove
+		int index = backend.search(title);
+		if (index == -1) {
+			JOptionPane.showMessageDialog(null, "No assignment found with title: " + title, "Not Found", JOptionPane.WARNING_MESSAGE);
+		}
+		else {
+			backend.removeAssignment(backend.getAssignments().get(index));
+			removeTitleField.setText("");
+			updateList();
 		}
 	}
 }
