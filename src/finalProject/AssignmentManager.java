@@ -23,6 +23,7 @@ public class AssignmentManager {
     }
 
     public void sortAssignments(SortType sortType){
+    	System.out.println("sorting!");
         for (int i = 0; i < this.assignments.size()-1; i++) {
         	Assignment item1 = this.assignments.get(i);
         	int chosen = i;
@@ -31,18 +32,19 @@ public class AssignmentManager {
         		Assignment item2 = this.assignments.get(j);
         		
         		//sort it based on the chosen sort condition
+        		Assignment comparison = this.assignments.get(chosen);
         		switch (sortType) {
         			case SortType.GRADE_ASCENDING:
-        				goesFirst = (item2.getGrade() <= item1.getGrade());
+        				goesFirst = (item2.getGrade() < comparison.getGrade());
         				break;
         			case SortType.GRADE_DESCENDING:
-        				goesFirst = (item2.getGrade() >= item1.getGrade());
+        				goesFirst = (item2.getGrade() > comparison.getGrade());
         				break;
         			case SortType.DATE_NEWEST:
-        				goesFirst = (item2.getDueDate().compareTo(item1.getDueDate()) >= 0);
+        				goesFirst = (item2.getDueDate().compareTo(comparison.getDueDate()) >= 0);
         				break;
         			default:
-        				goesFirst = (item2.getDueDate().compareTo(item1.getDueDate()) <= 0);
+        				goesFirst = (item2.getDueDate().compareTo(comparison.getDueDate()) <= 0);
         				break;
         		}
         		
@@ -55,9 +57,13 @@ public class AssignmentManager {
         		this.assignments.set(chosen, item1);
         		this.assignments.set(i, temp);
         	}
+        	
+        	System.out.println(this.assignments.get(i).getGrade() + " then ");
         }
     }
-
+    
+    //currently, this includes missing assignments
+    //maybe an option for it in the future
     public double getAverage(){
     	if (assignments.size() == 0)
     		return 0;
